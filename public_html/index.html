@@ -5,14 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Bot en la Web</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #chatbot iframe {
+            width: 100%;
+            height: 80vh; /* Usa 80% de la altura visible para que quepa el header + chat */
+            border: none;
+            visibility: hidden;
+        }
+
+        #chatbot iframe.loaded {
+            visibility: visible;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container">
         <h2>Bienvenido Laboratorio de microbiología aplicada</h2>
         <div id="chatbot">
-            <iframe src="https://embed.chatnode.ai/0ab69e9c-bc9d-4e43-a8ba-48a27cd6a09e" width="100%" height="700" style="visibility: hidden; border: none;" onload="this.style.visibility='visible';" allow="autoplay; clipboard-read; clipboard-write"></iframe>
+            <iframe src="https://embed.chatnode.ai/0ab69e9c-bc9d-4e43-a8ba-48a27cd6a09e"
+                    onload="this.classList.add('loaded')"
+                    allow="autoplay; clipboard-read; clipboard-write">
+            </iframe>
         </div>
     </div>
+
+    <!-- (opcional: el script de Kommunicate puede ser removido si no lo estás usando) -->
+    <!--
     <script>
         (function(d, m){
             var kommunicateSettings = 
@@ -23,5 +52,6 @@
             window.kommunicate = m; m._globals = kommunicateSettings;
         })(document, window.kommunicate || {});
     </script>
+    -->
 </body>
 </html>
